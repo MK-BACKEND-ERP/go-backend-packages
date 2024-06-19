@@ -8,6 +8,7 @@ import (
 	"strings"
 	"unicode"
 
+	"github.com/leekchan/accounting"
 	"golang.org/x/text/runes"
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
@@ -214,4 +215,30 @@ func SomenteNumeros(texto string) string {
 	}
 
 	return resultado
+}
+
+/*
+Formata um número de acordo com os parâmetros informados
+
+Exemplo:
+
+  - numero: 1532.2583
+  - simbolo: "R$"
+  - precisao: 2
+  - pontuacao_milhar: "."
+  - pontuacao_decimal: ","
+
+Retorno: R$1.532,26
+*/
+func FormatarNumero(numero interface{}, simbolo string, precisao int, pontuacao_milhar string, pontuacao_decimal string) string {
+	ac := accounting.Accounting{
+		Symbol:    simbolo,
+		Precision: precisao,
+		Thousand:  pontuacao_milhar,
+		Decimal:   pontuacao_decimal,
+	}
+
+	formattedNum := ac.FormatMoney(numero)
+
+	return formattedNum
 }
