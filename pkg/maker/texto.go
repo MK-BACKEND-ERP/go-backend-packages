@@ -20,8 +20,15 @@ func Append(texto *string, variants ...interface{}) string {
 	for _, v := range variants {
 		strVariants = append(strVariants, fmt.Sprint(v))
 	}
-	*texto += strings.Join(strVariants, "")
-	return *texto
+
+	var tx string
+	if texto != nil {
+		tx = *texto + strings.Join(strVariants, "")
+	} else {
+		tx = strings.Join(strVariants, "")
+	}
+
+	return tx
 }
 
 // Retorna o MD5 de um texto como uma string hexadecimal.
