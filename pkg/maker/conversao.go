@@ -10,50 +10,50 @@ import (
 /*
 Tenta converter o valor para um número inteiro.
 Se a conversão for bem-sucedida, retorna o número fracionado.
-Se a conversão falhar, retorna um erro.
+Se a conversão falhar, retorna 0.
 */
-func ParaInteiro(valor interface{}) (int64, error) {
+func ParaInteiro(valor interface{}) int64 {
 	switch v := valor.(type) {
 	case int:
-		return int64(v), nil
+		return int64(v)
 	case int64:
-		return v, nil
+		return v
 	case float64:
-		return int64(v), nil
+		return int64(v)
 	case string:
 		// Tentar converter a string para float64
 		floatValor, err := strconv.ParseFloat(v, 64)
 		if err != nil {
-			return 0, err
+			return 0
 		}
-		return int64(floatValor), nil
+		return int64(floatValor)
 	default:
-		return 0, fmt.Errorf("valor não pode ser convertido para inteiro")
+		return 0
 	}
 }
 
 /*
 Tenta converter o valor para um número fracionado.
 Se a conversão for bem-sucedida, retorna o número fracionado.
-Se a conversão falhar, retorna um erro.
+Se a conversão falhar, retorna 0.
 */
-func ParaFracionado(valor interface{}) (float64, error) {
+func ParaFracionado(valor interface{}) float64 {
 	switch v := valor.(type) {
 	case int:
-		return float64(v), nil
+		return float64(v)
 	case int64:
-		return float64(v), nil
+		return float64(v)
 	case float64:
-		return v, nil
+		return v
 	case string:
 		// Tentar converter a string para float64
 		resultado, err := strconv.ParseFloat(v, 64)
 		if err != nil {
-			return 0, err
+			return 0
 		}
-		return resultado, nil
+		return resultado
 	default:
-		return 0, fmt.Errorf("valor não pode ser convertido para fracionado")
+		return 0
 	}
 }
 
