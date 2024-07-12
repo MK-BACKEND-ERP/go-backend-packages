@@ -21,14 +21,16 @@ func Append(texto *string, variants ...interface{}) string {
 		strVariants = append(strVariants, fmt.Sprint(v))
 	}
 
-	var tx string
 	if texto != nil {
-		tx = *texto + strings.Join(strVariants, "")
+		*texto = *texto + strings.Join(strVariants, "")
 	} else {
-		tx = strings.Join(strVariants, "")
+		tx := strings.Join(strVariants, "")
+		return tx
 	}
 
-	return tx
+	fmt.Println(*texto)
+
+	return *texto
 }
 
 // Retorna o MD5 de um texto como uma string hexadecimal.
