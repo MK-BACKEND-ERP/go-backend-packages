@@ -249,5 +249,39 @@ func FormatarNumero(numero interface{}, simbolo string, precisao int, pontuacao_
 
 	formattedNum := ac.FormatMoney(numero)
 
+	if pontuacao_milhar == "" {
+		txSemCasaDecimaisESimbolo := ""
+		txCasasDecimais := ""
+
+		if precisao > 0 {
+			txSemCasaDecimaisESimbolo = formattedNum[len(simbolo) : len(formattedNum)-(precisao+1)]
+			txCasasDecimais = formattedNum[len(simbolo)+len(txSemCasaDecimaisESimbolo):]
+		} else {
+			txSemCasaDecimaisESimbolo = formattedNum[len(simbolo):]
+		}
+
+		txSemCasaDecimaisESimbolo = strings.ReplaceAll(txSemCasaDecimaisESimbolo, ",", "")
+
+		formattedNum = simbolo + txSemCasaDecimaisESimbolo + txCasasDecimais
+
+	}
+
+	if pontuacao_decimal == "" {
+		txSemCasaDecimais := ""
+		txCasasDecimais := ""
+
+		if precisao > 0 {
+			txSemCasaDecimais = formattedNum[len(simbolo) : len(formattedNum)-(precisao+1)]
+			txCasasDecimais = formattedNum[len(simbolo)+len(txSemCasaDecimais):]
+		} else {
+			txSemCasaDecimais = formattedNum[len(simbolo):]
+		}
+
+		txCasasDecimais = strings.ReplaceAll(txCasasDecimais, ".", "")
+
+		formattedNum = simbolo + txSemCasaDecimais + txCasasDecimais
+
+	}
+
 	return formattedNum
 }
