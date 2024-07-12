@@ -11,25 +11,21 @@ Essa função obtem a data atual e retorna.
 Timezones:
 Padrão (de acordo com o timezone do servidor)
 
-1 = America/Sao_Paulo
-*/
-func Hoje(timezone ...int) time.Time {
+Ex:
 
-	if len(timezone) > 0 && timezone[0] != 0 {
-		var timeLocation string
+  - America/Sao_Paulo
+
+  - America/Cuiaba
+*/
+func Hoje(timezone ...string) time.Time {
+
+	if len(timezone) > 0 && timezone[0] != "" {
 		var err error
 
-		switch timezone[0] {
-		case 1:
-			timeLocation = "America/Sao_Paulo"
-		default:
-			return time.Now()
-		}
-
-		timezone, err := time.LoadLocation(timeLocation)
+		timezone, err := time.LoadLocation(timezone[0])
 		if err != nil {
 			fmt.Println("Erro ao carregar o fuso horário:", err)
-			return time.Now().In(timezone)
+			return time.Now()
 		}
 
 		return time.Now().In(timezone)
