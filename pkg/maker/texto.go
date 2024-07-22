@@ -28,8 +28,6 @@ func Append(texto *string, variants ...interface{}) string {
 		return tx
 	}
 
-	fmt.Println(*texto)
-
 	return *texto
 }
 

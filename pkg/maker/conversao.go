@@ -98,7 +98,6 @@ func ParaData(valor string, formato ...string) (time.Time, error) {
 	}
 
 	valor = valor[:len(layout)]
-	fmt.Println(valor)
 
 	data, err := time.Parse(layout, valor)
 	if err != nil {
