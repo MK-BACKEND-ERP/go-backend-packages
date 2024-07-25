@@ -2,6 +2,7 @@ package maker
 
 import (
 	"fmt"
+	"reflect"
 	"strconv"
 	"strings"
 	"time"
@@ -59,6 +60,19 @@ func ParaFracionado(valor interface{}) float64 {
 
 // Letras converte um valor para uma string.
 func ParaLetras(valor interface{}) string {
+	if valor == nil {
+		return ""
+	}
+
+	v := reflect.ValueOf(valor)
+	if v.Kind() == reflect.Ptr {
+		if v.IsNil() {
+			return ""
+		}
+		fmt.Println("AQUI STRUCT")
+		return fmt.Sprint(v.Elem().Interface())
+	}
+	fmt.Println("AQUI U")
 	return fmt.Sprint(valor)
 }
 
