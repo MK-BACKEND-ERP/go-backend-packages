@@ -69,10 +69,9 @@ func ParaLetras(valor interface{}) string {
 		if v.IsNil() {
 			return ""
 		}
-		fmt.Println("AQUI STRUCT")
 		return fmt.Sprint(v.Elem().Interface())
 	}
-	fmt.Println("AQUI U")
+
 	return fmt.Sprint(valor)
 }
 
