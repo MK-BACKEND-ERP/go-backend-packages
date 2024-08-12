@@ -33,3 +33,8 @@ Em seguida deve baixar o pacote:
 ```bash
 go get github.com/MK-BACKEND-ERP/go-backend-packages
 ```
+
+### Adicionar seu token github variável de ambiente gitconfig
+```bash
+git config --global url."https://${PERSONAL_TOKEN_GIT}@github.com/".insteadOf "https://github.com/"
+```
