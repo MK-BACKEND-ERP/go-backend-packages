@@ -1,4 +1,4 @@
-module github.com/MK-NF/go-backend-packages
+module github.com/MK-BACKEND-ERP/go-backend-packages
 
 go 1.22.3
 
