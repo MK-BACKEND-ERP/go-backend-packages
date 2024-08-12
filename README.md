@@ -27,9 +27,9 @@ https://docs.github.com/pt/authentication/connecting-to-github-with-ssh/adding-a
 Para permitir que o go get baixe módulos privados, você precisa configurar a variável do GOPRIVATE:
 
 ```bash
-go env -w GOPRIVATE=github.com/MK-NF/go-backend-packages
+go env -w GOPRIVATE=github.com/MK-BACKEND-ERP/go-backend-packages
 ```
 Em seguida deve baixar o pacote:
 ```bash
-go get github.com/MK-NF/go-backend-packages
+go get github.com/MK-BACKEND-ERP/go-backend-packages
 ```
